@@ -1,0 +1,34 @@
+<div class="issues-list well" ng-show="issues.length">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th></th>
+        <th>Subject</th>
+        <th>Assignee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="issue in issues">
+        <td>
+          {{issue.id}}
+        </td>
+        <td ng-button-color>
+        </td>
+        <td>
+          <a href="#/issues/{{issue.id}}">{{issue.subject}}</a>
+        </td>
+        <td>
+          {{issue.assigned_to.name}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div ng-hide="issues.length">
+  <div class="container">
+  <p class="no-issues">
+    No Issues!
+  </p>
+  </div>
+</div>

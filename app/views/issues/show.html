@@ -1,0 +1,93 @@
+<div class="well">
+  <a href="javascript: history.back()">Back</a>
+  <h2>[#{{issue.id}}] {{issue.subject}}</h2>
+  <div>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th>
+            Author
+          </th>
+          <th>
+            created on
+          </th>
+          <th>
+            Tracker
+          </th>
+          <th>
+            Assigned to
+          </th>
+          <th>
+            Priority
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Done
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{issue.author.name}}
+          </td>
+          <td ng-relative-time ng-model="issue.created_on">
+          </td>
+          <td>
+            {{issue.tracker.name}}
+          </td>
+          <td>
+            {{issue.assigned_to.name}}
+          </td>
+          <td>
+            {{issue.priority.name}}
+          </td>
+          <td>
+            {{issue.status.name}}
+          </td>
+          <td>
+            {{isse.done_ratio}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-markdowned ng-model="issue.description">
+
+    </div>
+    <div class="comments" ng-show="comments.length">
+      <div ng-repeat="comment in comments" class="comment-note">
+        <div>
+          <p>
+          <strong>{{comment.user.name}} wrote <span ng-relative-time ng-model="comment.created_on">{{comment.created_on}}</strong>
+          </p>
+          <div ng-markdowned ng-model="comment.notes">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="new-comment" ng-controller="NewCommentController">
+      <form ng-submit="postNewComment()" name="comment_form">
+        <textarea ng-model="comment.notes" class="form-control" rows="8">
+
+        </textarea>
+        <div>
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    -->
+  </div>
+  <div class="attachments" ng-show="issue.attachments.length">
+    <h4>Attachments</h4>
+    <ul class="list-unstyled">
+      <li ng-repeat="attachment in issue.attachments">
+      <a href="{{attachment.content_url}}">{{attachment.filename}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
